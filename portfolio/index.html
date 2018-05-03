@@ -19,7 +19,9 @@
 		margin:0;
 		padding:0;
 	}
-
+	p{
+		color: #fff;
+	}
 	/* Centered texts in each section
 	* --------------------------------------- */
 	.section{
@@ -30,7 +32,7 @@
 	/* Backgrounds will cover all the section
 	* --------------------------------------- */
 	.section{
-		background-size: cover;
+		background-size: 100%;
 	}
 	.slide{
 		background-size: 100%;
@@ -46,18 +48,6 @@
 		transform: translateY(-50%);
 		position: relative;
 	}
-	#section2{
-		background-image: url(assets/img/bg3.jpg);
-		padding: 6% 0 0 0;
-	}
-	#section3{
-		background-image: url(assets/img/bg4.jpg);
-		padding: 6% 0 0 0;
-	}
-	#section3 h1{
-		color: #000;
-	}
-
 
 	/*Adding background for the slides
 	* --------------------------------------- */
@@ -128,22 +118,39 @@
 <body>
 <div id="fullpage">
 	<div class="section " id="section0"><h1>licensed's Portfolio</h1></div>
-	<div class="section" id="section1">
-		<div class="slide" id="textslide"><h1>SUAP (Universal System of Public Administration) is an ERP developed for Federal Institutes. It haves 16 modules and helps to control internal processes, such as: Inventory Management, Stock Control, Reports, Fleet Management, Employees Management.</h1></div>
+	<div class="section">
+		<div class="slide" id="textslide"><h1>SUAP</h1>
+			<p>SUAP (Universal System of Public Administration) is an ERP developed for Federal Institutes. It haves 16 modules and helps to control internal processes, such as: Inventory Management, Stock Control, Reports, Fleet Management, Employees Management.</p>
+		</div>
 		<div class="slide" id="slide1"></div>
 	</div>
-	<div class="section" id="section1">
-		<div class="slide" id="textslide"><h1>REMOCAO was developed to help employees change campus/city of work. It could help with business rules, like validate if both employees had sames same activities, older employee haves priority.</h1></div>
+	<div class="section">
+		<div class="slide" id="textslide"><h1>REMOCAO</h1>
+			<p>REMOCAO was developed to help employees change campus/city of work. It could help with business rules, like validate if both employees had sames same activities, older employee haves priority.</p>
+		</div>
 		<div class="slide" id="slide2"></div>
 		<div class="slide" id="slide3"></div>
 	</div>	
-	<div class="section" id="section1">
-		<div class="slide" id="textslide"><h1>BPMN</h1></div>
+	<div class="section">
+		<div class="slide" id="textslide"><h1>BPMN</h1>
+			<p>BPMN is</p>
+		</div>
 		<div class="slide" id="slide4"><h1>Slide Backgrounds</h1></div>
 		<div class="slide" id="slide5"><h1>Totally customizable</h1></div>
 		<div class="slide" id="slide6"><h1>Totally customizable</h1></div>
 	</div>		
-	<div class="section" id="section3"><h1>One Image = One thousand words</h1></div>
+	<div class="section">
+		<div class="slide" id="textslide"><h1>PDF</h1>
+			<p>PDF is</p>
+		</div>
+		<div class="slide" id="slide7"></div>
+	</div>
+	<div class="section">
+		<div class="slide" id="textslide"><h1>PORTAL</h1>
+			<p>PORTAL is</p>
+		</div>
+		<div class="slide" id="slide8"></div>
+	</div>
 </div>
 </body>
 </html>
