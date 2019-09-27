@@ -1,0 +1,139 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Classes vs Objetos</title>
+
+		<link rel="stylesheet" href="css/reset.css">
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/night.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/monokai.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<h2>Classes Vs Objetos</h1>
+					<h3>De uma vez por todas</h3>
+					<p>
+						<small>Por <a href="http://dantas.tk">licensed</a> aka <a href="http://dantas.tk">Ricardo Dantas</a></small>
+					</p>
+				</section>
+				<section>
+					<section>
+						<h2>CLASSE</h2>
+						<p>
+							Classe, no contexto de orientação a objetos, pode ser interpretada como molde.
+						</p>
+					</section>
+					<section>
+						<h2>OBJETO</h2>
+						<p>
+							Objeto, olhando por essa perspectiva, é algo gerado pelo molde.
+						</p>
+					</section>
+					<section data-background="img/molde.jpg" data-background-size="50%">
+					</section>
+				</section>
+				<section>
+					<section>
+					<pre><code class="hljs" data-trim data-line-numbers="1-5">
+		class Palhaco:
+		    """Molde para o palhaço"""
+		    def __init__(self, nome, cor):
+		        self.cor = cor
+		        self.nome = nome
+					</code></pre>
+					<aside class="notes">
+						Que coisas o palhaço precisa para criar um objeto.
+					</aside>
+				</section>
+
+				<section>
+					<pre><code class="hljs" data-trim data-line-numbers="1-10">
+		class Palhaco:
+		    """Molde para o palhaço"""
+		    def __init__(self, nome, cor):
+		        self.nome = nome
+		        self.cor = cor		        
+
+		chocolate = Palhaco(nome="Chocolate", cor="Vermelho")
+		patati = Palhaco("Patati", "Verde")		
+					</code></pre>
+					<aside class="notes">
+						Que coisas o palhaço precisa para criar um objeto.
+					</aside>
+				</section>
+			</section>
+			<section>
+					<section>
+					<pre><code class="hljs" data-trim data-line-numbers="1-7">
+		class Personagem:
+		    """Molde para o Personagem"""
+		    def __init__(self, nome, cor tipo):
+		        self.nome = nome
+		        self.cor = cor		        
+		        self.tipo = tipo
+					</code></pre>
+					<aside class="notes">
+						Que coisas o personagem precisa para criar um objeto.
+					</aside>
+				</section>
+
+				<section>
+					<pre><code class="hljs" data-trim data-line-numbers="1-10">
+		class Personagem:
+		    """Molde para o Personagem"""
+		    def __init__(self, nome, cor, tipo):
+		        self.nome = nome		    
+		        self.cor = cor
+		        self.tipo = tipo
+		boneco1 = Personagem(nome = "Patati", cor="Verde", tipo="Palhaco")
+		boneco2 = Personagem(nome = "Charmander", cor="Laranja", tipo="Pokemon")
+					</code></pre>
+					<aside class="notes">
+						Que coisas o palhaço precisa para criar um objeto.
+					</aside>
+				</section>
+			</section>
+
+
+
+			</div>
+		</div>
+
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				width: 1366,
+				height: 768,
+				margin: 0.1,
+				minScale: 1,
+				maxScale: 1.5,
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true }
+				]
+			});
+		</script>
+	</body>
+</html>
