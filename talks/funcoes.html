@@ -1,0 +1,256 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>Desvendando Funções e Parâmetros</title>
+
+	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" href="css/reveal.css">
+	<link rel="stylesheet" href="css/theme/night.css">
+
+	<!-- Theme used for syntax highlighting of code -->
+	<link rel="stylesheet" href="lib/css/monokai.css">
+
+	<!-- Printing and PDF exports -->
+	<script>
+	var link = document.createElement( 'link' );
+	link.rel = 'stylesheet';
+	link.type = 'text/css';
+	link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+	document.getElementsByTagName( 'head' )[0].appendChild( link );
+	</script>
+</head>
+<body>
+	<div class="reveal">
+		<div class="slides">
+			<section>
+				<h3>Desvendando Funções e Parâmetros</h3>
+				<p>
+					<small>Por <a href="http://dantas.tk">licensed</a> aka <a href="http://dantas.tk">Ricardo Dantas</a></small>
+				</p>
+			</section>
+			<section>
+				<section>
+					<h3>Funções Nomeadas</h3>
+					<pre><code class="hljs" data-trim data-line-numbers="1-5">
+						def ola_mundo():
+							return 'Olá Mundo'
+
+						def quadrado(numero):
+							return numero ** 2							
+					</code></pre>
+					<aside class="notes">
+						Função é um bloco de código que provavelmente será executada mais de uma vez na aplicação. Toda função por definição retorna algo.
+					</aside>
+				</section>
+				<section>
+					<h3>Funções Anônimas</h3>
+					<pre><code class="hljs" data-trim data-line-numbers="1-6">
+						ola = lambda: 'Olá Mundo'
+						ola()
+
+						quad = lambda numero : numero ** 2
+						quad(2)
+						(lambda numero : numero ** 2)
+					</code></pre>
+					<aside class="notes">
+						Não possuem um nome, apesar de jogar ela para uma variável
+					</aside>
+				</section>
+				<section>
+					<h3>Funções Classes</h3>
+					<pre><code class="hljs" data-trim data-line-numbers="1-4">
+						class OlaMundo:
+						    def __call__(self):
+						        return 'Olá Mundo'
+						OlaMundo()()
+					</code></pre>
+					<aside class="notes">
+						Isso é um Objeto Callable!
+					</aside>
+				</section>
+			</section>
+			<section>
+				<section>
+					<h3>Parâmetros em funções anônimas</h3>
+					<pre><code class="hljs" data-trim data-line-numbers="1-5">
+						quad = lambda numero : numero ** 2
+						soma = lambda numero1, numero2 : numero1 + numero2
+
+						quad(5)
+						soma(2, 3)
+					</code></pre>
+					<aside class="notes">
+						Parâmetro é a variável que vai receber o valor
+						Argumento é o valor que vai ser passado
+					</aside>
+				</section>
+				<section>
+					<h3>Parâmetros Posicionais</h3>
+					<pre><code class="hljs" data-trim data-line-numbers="1-5">
+					def soma_posicional(numero1, numero2):
+					    return numero1 + numero2
+
+					soma_posicional(2, 3)
+					</code></pre>
+					<aside class="notes">
+						numero1 e numero2 são parametros posicionais.
+					</aside>
+				</section>
+				<section>
+					<h3>Parâmetros Nomeados</h3>
+					<pre><code class="hljs" data-trim data-line-numbers="1-15">
+				    def soma_nomeados(numero1=50, numero2=50):
+					    return numero1 + numero2
+
+					soma_nomeados(1, numero2=10)
+					</code></pre>
+					<aside class="notes">
+						numero1 e numero2 são parametros nomeados.
+						Default vem do francês défaut, que significa na falta de (ty @dunossauro)
+						na falta de numero1 ou numero2, o valor 50 será usado.
+					</aside>
+				</section>
+			</section>
+			<section>
+				<section>
+					<h4>Parâmetros explicitamente nomeados</h4>
+					<pre><code class="hljs" data-trim data-line-numbers="1-7">
+						def soma_explicitamente_nomeados(*, numero1=50, numero2=50):
+						    return numero1 + numero2
+
+						def soma_explicitamente_nomeados2(numero1=50, *, numero2=50):
+						    return numero1 + numero2
+
+						soma_explicitamente_nomeados(numero1=10, numero2=15)
+					</code></pre>
+					<aside class="notes">
+						* Entrou no Python 3.6 e daí pra frente tem que ser nomeado
+					</aside>
+				</section>
+
+				<section>
+					<h4>Parâmetros explicitamente posicionais</h4>
+					<pre><code class="hljs" data-trim data-line-numbers="1-4">
+						def soma_explicitamente_posicionais(numero1, numero2, /):
+						    return numero1 + numero2
+
+						soma_explicitamente_posicionais(7, 8)
+					</code></pre>
+					<aside class="notes">
+						\ entrou no Python 3.8 e daqui pra trás é posicional
+						PEP-570 Parametros posicionais
+						PEP = Python Enhancement Proposals, ver PEP1 para entender
+					</aside>
+				</section>
+
+				<section>
+					<h4>Parâmetros explicitamente nomeados e posicionais</h4>
+					<pre><code class="hljs" data-trim data-line-numbers="1-4">
+						def soma_tudo_mix(x, y, /, z, *, w):
+						    return sum((x, y, z, w))
+
+						soma_tudo_mix(6, 10, 2, w=1)
+					</code></pre>
+				</section>				
+			</section>
+
+			<section>
+				<section>
+					<h3>Empacotamento de argumentos</h3>
+					<pre><code class="hljs" data-trim data-line-numbers="1-10">
+						def soma(a, b, c, d, e, f, g, h, i, j, k, l):
+						    return sum(a, b, c, d, e, f, g, h, i, j, k, l)
+					</code></pre>
+				</section>
+				<section>
+					<pre><code class="hljs" data-trim data-line-numbers="1-10">
+						def soma(*args):
+						    return sum(*args)
+					</code></pre>
+				</section>
+				<section>
+					<pre><code class="hljs" data-trim data-line-numbers="1-10">
+						def meu_sum(*args, **kwargs):
+						    return args, kwargs
+					</code></pre>
+				</section>
+			</section>
+			<section>
+				<section>
+					<h3>Desempacotamento de argumentos</h3>
+					<pre><code class="hljs" data-trim data-line-numbers="1-10">
+						def soma(a=0, b=0, c=0, d=0):
+						    return sum(a, b, c, d)
+
+						lista = [-1, 2, 3, 4, -10]
+						soma(*lista)
+					</code></pre>
+				</section>
+				<section>
+					<pre><code class="hljs" data-trim data-line-numbers="1-10">
+						def maior(a=0, b=0, c=0, d=0):
+						    return max((a, b, c, d))
+
+						valores = {'a': 1, 'b': 5, 'c': 2, 'd': -1}
+						maior(**valores)
+					</code></pre>
+				</section>				
+			</section>
+			<section>
+				<section>
+					<h3>Funções como objetos de primeira classe</h3>
+					<pre><code class="hljs" data-trim data-line-numbers="1-15">
+						def soma(numero1, numero2):
+						    return numero1 + numero2
+
+						def subtrai(numero1, numero2):
+						    return numero1 - numero2
+
+						calculadora = {
+							'soma': soma,
+							'subtrai': subtrai,
+							'multiplica': lambda x, y: x * y,
+							'divide': lambda x, y: x / y,
+						}
+
+						calculadora['soma'](2, 3)
+						calculadora['divide'](10, 5)
+					</code></pre>
+					<aside class="notes">
+					No Python, funções são tratadas como qualquer outro objeto.
+					</aside>
+				</section>
+			</section>
+			<section>
+				<p>Thanks PUG-PE, PyBR, @livedepython</p>
+				<a href="#"><p>http://dantas.tk/talks/funcoes</p></a>
+			</section>
+
+		</div>
+	</div>
+
+	<script src="js/reveal.js"></script>
+
+	<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				width: 1366,
+				height: 768,
+				margin: 0.1,
+				minScale: 1,
+				maxScale: 1.5,
+				dependencies: [
+				{ src: 'plugin/markdown/marked.js' },
+				{ src: 'plugin/markdown/markdown.js' },
+				{ src: 'plugin/notes/notes.js', async: true },
+				{ src: 'plugin/highlight/highlight.js', async: true }
+				]
+			});
+			</script>
+		</body>
+		</html>
