@@ -34,7 +34,7 @@
 			<section>
 				<section>
 					<h3>Funções Nomeadas</h3>
-					<pre><code class="hljs" data-trim data-line-numbers="1-5">
+					<pre><code class="python" data-trim data-line-numbers="1-5">
 						def ola_mundo():
 							return 'Olá Mundo'
 
@@ -47,7 +47,7 @@
 				</section>
 				<section>
 					<h3>Funções Anônimas</h3>
-					<pre><code class="hljs" data-trim data-line-numbers="1-6">
+					<pre><code class="python" data-trim data-line-numbers="1-6">
 						ola = lambda: 'Olá Mundo'
 						ola()
 
@@ -61,7 +61,7 @@
 				</section>
 				<section>
 					<h3>Funções Classes</h3>
-					<pre><code class="hljs" data-trim data-line-numbers="1-4">
+					<pre><code class="python" data-trim data-line-numbers="1-4">
 						class OlaMundo:
 						    def __call__(self):
 						        return 'Olá Mundo'
@@ -75,7 +75,7 @@
 			<section>
 				<section>
 					<h3>Parâmetros em funções anônimas</h3>
-					<pre><code class="hljs" data-trim data-line-numbers="1-5">
+					<pre><code class="python" data-trim data-line-numbers="1-5">
 						quad = lambda numero : numero ** 2
 						soma = lambda numero1, numero2 : numero1 + numero2
 
@@ -89,7 +89,7 @@
 				</section>
 				<section>
 					<h3>Parâmetros Posicionais</h3>
-					<pre><code class="hljs" data-trim data-line-numbers="1-5">
+					<pre><code class="python" data-trim data-line-numbers="1-5">
 					def soma_posicional(numero1, numero2):
 					    return numero1 + numero2
 
@@ -101,8 +101,8 @@
 				</section>
 				<section>
 					<h3>Parâmetros Nomeados</h3>
-					<pre><code class="hljs" data-trim data-line-numbers="1-15">
-				    def soma_nomeados(numero1=50, numero2=50):
+					<pre><code class="python" data-trim data-line-numbers="1-5">
+					def soma_nomeados(numero1=20, numero2=4):
 					    return numero1 + numero2
 
 					soma_nomeados(1, numero2=10)
@@ -117,7 +117,7 @@
 			<section>
 				<section>
 					<h4>Parâmetros explicitamente nomeados</h4>
-					<pre><code class="hljs" data-trim data-line-numbers="1-7">
+					<pre><code class="python" data-trim data-line-numbers="1-7">
 						def soma_explicitamente_nomeados(*, numero1=50, numero2=50):
 						    return numero1 + numero2
 
@@ -133,7 +133,7 @@
 
 				<section>
 					<h4>Parâmetros explicitamente posicionais</h4>
-					<pre><code class="hljs" data-trim data-line-numbers="1-4">
+					<pre><code class="python" data-trim data-line-numbers="1-4">
 						def soma_explicitamente_posicionais(numero1, numero2, /):
 						    return numero1 + numero2
 
@@ -148,7 +148,7 @@
 
 				<section>
 					<h4>Parâmetros explicitamente nomeados e posicionais</h4>
-					<pre><code class="hljs" data-trim data-line-numbers="1-4">
+					<pre><code class="python" data-trim data-line-numbers="1-4">
 						def soma_tudo_mix(x, y, /, z, *, w):
 						    return sum((x, y, z, w))
 
@@ -160,19 +160,19 @@
 			<section>
 				<section>
 					<h3>Empacotamento de argumentos</h3>
-					<pre><code class="hljs" data-trim data-line-numbers="1-10">
+					<pre><code class="python" data-trim data-line-numbers="1-10">
 						def soma(a, b, c, d, e, f, g, h, i, j, k, l):
 						    return sum(a, b, c, d, e, f, g, h, i, j, k, l)
 					</code></pre>
 				</section>
 				<section>
-					<pre><code class="hljs" data-trim data-line-numbers="1-10">
+					<pre><code class="python" data-trim data-line-numbers="1-10">
 						def soma(*args):
 						    return sum(*args)
 					</code></pre>
 				</section>
 				<section>
-					<pre><code class="hljs" data-trim data-line-numbers="1-10">
+					<pre><code class="python" data-trim data-line-numbers="1-10">
 						def meu_sum(*args, **kwargs):
 						    return args, kwargs
 					</code></pre>
@@ -181,7 +181,7 @@
 			<section>
 				<section>
 					<h3>Desempacotamento de argumentos</h3>
-					<pre><code class="hljs" data-trim data-line-numbers="1-10">
+					<pre><code class="python" data-trim data-line-numbers="1-10">
 						def soma(a=0, b=0, c=0, d=0):
 						    return sum(a, b, c, d)
 
@@ -190,7 +190,7 @@
 					</code></pre>
 				</section>
 				<section>
-					<pre><code class="hljs" data-trim data-line-numbers="1-10">
+					<pre><code class="python" data-trim data-line-numbers="1-10">
 						def maior(a=0, b=0, c=0, d=0):
 						    return max((a, b, c, d))
 
@@ -202,7 +202,7 @@
 			<section>
 				<section>
 					<h3>Funções como objetos de primeira classe</h3>
-					<pre><code class="hljs" data-trim data-line-numbers="1-15">
+					<pre><code class="python" data-trim data-line-numbers="1-15">
 						def soma(numero1, numero2):
 						    return numero1 + numero2
 
