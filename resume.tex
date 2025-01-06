@@ -1,0 +1,255 @@
+%-------------------------
+% Resume in Latex
+% Author : Jake Gutierrez
+% Based off of: https://github.com/sb2nov/resume
+% License : MIT
+%------------------------
+
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\usepackage{fontawesome5}
+\usepackage{multicol}
+\setlength{\multicolsep}{-3.0pt}
+\setlength{\columnsep}{-1pt}
+\input{glyphtounicode}
+
+
+%----------FONT OPTIONS----------
+% sans-serif
+% \usepackage[sfdefault]{FiraSans}
+% \usepackage[sfdefault]{roboto}
+% \usepackage[sfdefault]{noto-sans}
+% \usepackage[default]{sourcesanspro}
+
+% serif
+% \usepackage{CormorantGaramond}
+% \usepackage{charter}
+
+
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.6in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1.19in}
+\addtolength{\topmargin}{-.7in}
+\addtolength{\textheight}{1.4in}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Sections formatting
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large\bfseries
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+% Ensure that generate pdf is machine readable/ATS parsable
+\pdfgentounicode=1
+
+%-------------------------
+% Custom commands
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{-2pt}}
+  }
+}
+
+\newcommand{\classesList}[4]{
+    \item\small{
+        {#1 #2 #3 #4 \vspace{-2pt}}
+  }
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{1.0\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & \textbf{\small #2} \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubSubheading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \textit{\small#1} & \textit{\small #2} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+    \item
+    \begin{tabular*}{1.001\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & \textbf{\small #2}\\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
+
+\renewcommand\labelitemi{$\vcenter{\hbox{\tiny$\bullet$}}$}
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.0in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+%-------------------------------------------
+%%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+
+%----------HEADING----------
+% \begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
+%   \textbf{\href{http://sourabhbajaj.com/}{\Large Sourabh Bajaj}} & Email : \href{mailto:sourabh@sourabhbajaj.com}{sourabh@sourabhbajaj.com}\\
+%   \href{http://sourabhbajaj.com/}{http://www.sourabhbajaj.com} & Mobile : +1-123-456-7890 \\
+% \end{tabular*}
+
+\begin{center}
+    {\Huge \scshape Ricardo Dantas} \\ \vspace{1pt}
+    \href{mailto:ricardilhodantas@gmail.com}{\raisebox{-0.2\height}\faEnvelope\  \underline{ricardilhodantas@gmail.com}} ~ 
+    \href{https://linkedin.com/in/licensed/}{\raisebox{-0.2\height}\faLinkedin\ \underline{linkedin.com/in/licensed}}  ~
+    \href{https://github.com/licensed/}{\raisebox{-0.2\height}\faGithub\ \underline{github.com/licensed}}
+    \vspace{-8pt}
+\end{center}
+
+
+%-----------EDUCATION-----------
+\section{Education}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {UFRPE - Rural Federal University of Pernambuco}{2019 -- 2021}
+      {MSc in Applied Informatics}{Brazil}
+    \resumeSubHeadingListEnd
+
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {UFRPE - Rural Federal University of Pernambuco} {2010 -- 2017}
+      {Bachelor of Computer Science} {Brazil}
+    \resumeSubHeadingListEnd
+%------RELEVANT COURSEWORK-------
+\section{Research}
+    %\resumeSubHeadingListStart
+        \begin{multicols}{4}
+            \begin{itemize}[itemsep=-5pt, parsep=3pt]
+                \item\small Artificial Intelligence
+                \item Generative AI
+                \item Machine Learning
+                \item Text/Image Processing
+                \item Large Language Models
+                \item Web Scrapping
+            \end{itemize}
+        \end{multicols}
+        \vspace*{2.0\multicolsep}
+    %\resumeSubHeadingListEnd
+
+
+%-----------EXPERIENCE-----------
+\section{Experience}
+  \resumeSubHeadingListStart
+
+    \resumeSubheading
+      {Zup Innovation}{Jan 2024 -- Current}
+      {Generative AI Developer}{Brazil}
+      \resumeItemListStart
+        \resumeItem{StackSpot project, applying Artificial Intelligence and Advanced Machine Learning techniques to investigate and remediate operational diagnostics, as well as automate root cause analysis for problems in workloads, using GenAI.}
+        \resumeItem{Developed a chatbot on ITAU Bank, using Generative AI, Retrieval-Augmented Generation (RAG), Machine Learning techniques, LLM (Large Language Model) and LangChain.}
+        \resumeItem{Implemented RAG to enhance the chatbot's ability to retrieve and generate contextually accurate responses by integrating external knowledge bases.}
+        \resumeItem{Designed and implemented Backend for Frontend (BFF) architectures to optimize communication between frontends and backends, ensuring tailored responses for different client applications. I worked extensively with API Gateways to manage and secure API traffic, enabling seamless integration between services.}
+        \resumeItem{For infrastructure, I utilized Terraform as Infrastructure as Code and Kubernetes for container orchestration. The services were hosted on AWS, primarily using EKS (Elastic Kubernetes Service), Lambda functions, and SQS (Simple Queue Service).}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {Redshelf, Inc}{Jun 2022 -- Nov 2022}
+      {Senior Software Engineer}{USA}
+      \resumeItemListStart
+        \resumeItem{Python RESTful APIs and Microservices Development on API Integrations Team.}
+        \resumeItem{Agile Scrum Methodology. Elasticsearch queries}
+        \resumeItem{High quality automated unit, integrations and BDD tests}
+    \resumeItemListEnd
+
+    \resumeSubheading
+      {Tempest Security Intelligence} {Sep 2021 -- Jun 2022}
+      {Senior Software Engineer}{Brazil}
+      \resumeItemListStart
+        \resumeItem{Threat Intelligence Team.}
+        \resumeItem{Automate tasks and processes with Web Scrapers and Microservices Development.}
+        \resumeItem{Stack: (pure) Python, Splunk, Elasticsearch, Nats.io, Siemplify, Redash (as ETL), AWS.}
+    \resumeItemListEnd
+
+    \resumeSubheading
+      {Spark Agency} {Jan 2021 -- Jun 2021}
+      {Senior Chatbot Developer}{Portugal}
+      \resumeItemListStart
+        \resumeItem{Developed a Python Chatbot, using Flask framework, automating candidatures processes, using machine learning techniques and NLP (Natural Language Processing) with Google Dialogflow platform.}
+    \resumeItemListEnd
+
+    \resumeSubheading
+      {Rede Cidadã} {Jun 2020 -- Sep 2021}
+      {Python Teacher}{Brazil}
+      \resumeItemListStart
+        \resumeItem{Teacher at Python Technical Program of Start Latam Project, in the Python Algorithms, SQL and Django courses.}
+    \resumeItemListEnd
+
+    \resumeSubheading
+      {Towin} {Aug 2020 -- Sep 2020}
+      {Software Engineer}{Brazil}
+      \resumeItemListStart
+        \resumeItem{Hyperautomation and Facial Recognition System using Deep Learning Algorithms for Computer Vision for a Brazilian Bank.}
+    \resumeItemListEnd
+
+    \resumeSubheading
+      {Instituto Federal de Pernambuco } {Dec 2016 -- Aug 2020}
+      {Web Development Teacher}{Brazil}
+      \resumeItemListStart
+        \resumeItem{Teacher at Web Programming Technical Program of PRONATEC, in the Python Algorithms, SQL, Django, HTML5 and CSS3 Courses.}
+    \resumeItemListEnd
+
+    \resumeSubheading
+      {Instituto Federal de Pernambuco } {Sep 2010 -- Aug 2020}
+      {Software Developer}{Brazil}
+      \resumeItemListStart
+        \resumeItem{Mar/2013 → As Coordinator, my roles and activities was: Business Process Modeling (BPMN) of all IT department, Continuous Integration, Git workflow, Projects Management, ensuring deadlines, Database Management, Provide training, validation and systems implementation, Motivate team and Conflict Management.}      
+        \resumeItem{Sep/2012 → As Public Agent, my roles and activities was Requirements analysis, Web development and Database management (relational and non-relational Databases)}
+        \resumeItem{ Sep/2010 → As Intern, I developed web systems which helps to control internal processes, such as: Inventory Management, Stock Control, Reports. Stack: Python + Django + HTML + CSS + JavaScript }
+    \resumeItemListEnd
+
+  \resumeSubHeadingListEnd
+\vspace{-16pt}
+
+%
+%-----------PROGRAMMING SKILLS-----------
+\section{Technical Skills}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+     \textbf{Languages/Frameworks}{: Python, FastAPI, Flask, Django, HTML/CSS, JavaScript, SQL, NoSQL. } \\
+     \textbf{AI}{: LLM, Langchain, RAG, Tensorflow, Keras, Pandas. } \\
+     \textbf{Tools}{: Linux, Git, Terraform, Kubernetes, Splunk, Elasticsearch, Nats.io, Siemplify, Redash, Dialogflow.} \\
+     \textbf{Cloud AWS}{: EC2, ECS/EKS, Lambda, SQS, SNS, Api Gateway, S3, RDS, Aurora, DynamoDB.} \\
+     \textbf{Cloud GCP}{: GCE, GKE, Functions, Pub/Sub, GCS, SQL.} \\
+    }}
+ \end{itemize}
+ \vspace{-16pt}
+
+\begin{center}
+    \large\bfseries "If everyone shared a little of their knowledge, the world would be better."
+\end{center}
+
+\end{document}
