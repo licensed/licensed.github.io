@@ -1,0 +1,674 @@
+[
+ {
+  "name": "ACCIOLY COMERCIO FARMACEUTICO LTDA",
+  "latitude": -8.1479905,
+  "longitude": -34.9157437,
+  "address": "AV ARMINDO MOURA, 391 LOJA 02, PIEDADE, JABOATAO DOS GUARARAPES, PE"
+ },
+ {
+  "name": "D C DA ROCHA LTDA - EPP",
+  "latitude": -8.0980008,
+  "longitude": -34.9683721,
+  "address": "AV GENERAL MANOEL RABELO, 5179, CAVALEIRO, JABOATAO DOS GUARARAPES, PE"
+ },
+ {
+  "name": "DROGARIA SAO PAULO S.A.",
+  "latitude": -8.1894618,
+  "longitude": -34.9311476,
+  "address": "R DOUTOR ANICETO VAREJAO, 262 SALA  01, PIEDADE, JABOATAO DOS GUARARAPES, PE"
+ },
+ {
+  "name": "EMPREENDIMENTOS PAGUE MENOS S.A.",
+  "latitude": -8.1629756,
+  "longitude": -34.9255721,
+  "address": "AV BARRETO DE MENEZES, 419, CAJUEIRO SECO, JABOATAO DOS GUARARAPES, PE"
+ },
+ {
+  "name": "EMPREENDIMENTOS PAGUE MENOS S/A",
+  "latitude": -8.1796581,
+  "longitude": -34.9179507,
+  "address": "AV BERNARDO VIEIRA DE MELO, 3000, PIEDADE, JABOATAO DOS GUARARAPES, PE"
+ },
+ {
+  "name": "EMPREENDIMENTOS PAGUE MENOS S/A",
+  "latitude": -8.1915094,
+  "longitude": -34.9194434,
+  "address": "R DOUTOR ANICETO VAREJAO, 100 LJ 0001, CANDEIAS, JABOATAO DOS GUARARAPES, PE"
+ },
+ {
+  "name": "EMPREENDIMENTOS PAGUE MENOS S/A",
+  "latitude": -8.1766183,
+  "longitude": -34.9187565,
+  "address": "AV AYRTON SENNA DA SILVA, 2674, PIEDADE, JABOATAO DOS GUARARAPES, PE"
+ },
+ {
+  "name": "FARMACIA TALENTO LTDA",
+  "latitude": -8.1132305,
+  "longitude": -35.0176469,
+  "address": "CORONEL CAMARA LIMA,, CENTRO, JABOATAO DOS GUARARAPES, PE"
+ },
+ {
+  "name": "JOSIANE BARBOSA SOUZA",
+  "latitude": -8.0817622,
+  "longitude": -34.9762831,
+  "address": "R HELIO LOBO COSTA, 85-A, CAVALEIRO, JABOATAO DOS GUARARAPES, PE"
+ },
+ {
+  "name": "M F RUFINO DA SILVA FARMACIA - ME",
+  "latitude": -8.0762047,
+  "longitude": -35.0000039,
+  "address": "AV DOLORES DURAN, 68, CURADO, JABOATAO DOS GUARARAPES, PE"
+ },
+ {
+  "name": "NEX DISTRIBUIDORA DE PRODUTOS FARMACEUTICOS LTDA",
+  "latitude": -8.1728674,
+  "longitude": -34.9176799,
+  "address": "AVENIDA AYRTON SENNA DA SILVA, 2221,, PIEDADE, JABOATAO DOS GUARARAPES, PE"
+ },
+ {
+  "name": "NEX DISTRIBUIDORA DE PRODUTOS FARMACEUTICOS LTDA",
+  "latitude": -8.1902592,
+  "longitude": -34.9197785,
+  "address": "BERNARDO VIEIRA DE MELO, 4146, PIEDADE, JABOATAO DOS GUARARAPES, PE"
+ },
+ {
+  "name": "RAIA DROGASIL S/A",
+  "latitude": -8.0908598,
+  "longitude": -34.9735267,
+  "address": "GOVERNADOR AGAMENON MAGALHAES,, CAVALEIRO, JABOATAO DOS GUARARAPES, PE"
+ },
+ {
+  "name": "TABOCAS PRODUTOS FARMACEUTICOS LTDA",
+  "latitude": -8.1127009,
+  "longitude": -35.0186435,
+  "address": "BARAO DE LUCENA,, CENTRO, JABOATAO DOS GUARARAPES, PE"
+ },
+ {
+  "name": "VJ FARMA LTDA",
+  "latitude": -8.1628941,
+  "longitude": -34.9256669,
+  "address": "AV BARRETO DE MENEZES, 381 LJ 0001 LOJA 000E         LOJA 000C, CAJUEIRO SECO, JABOATAO DOS GUARARAPES, PE"
+ },
+ {
+  "name": "ZN FARMA LTDA",
+  "latitude": -8.1121775,
+  "longitude": -35.0179775,
+  "address": "PC NOSSA SENHORA DO ROSARIO, 472, CENTRO, JABOATAO DOS GUARARAPES, PE"
+ },
+ {
+  "name": "EMPREENDIMENTOS PAGUE MENOS S/A",
+  "latitude": -7.9325854,
+  "longitude": -34.8240822,
+  "address": "AV DOUTOR CLAUDIO JOSE GUEIROS LEITE, 2855, JANGA, PAULISTA, PE"
+ },
+ {
+  "name": "EMPREENDIMENTOS PAGUE MENOS S/A",
+  "latitude": -7.9415135,
+  "longitude": -34.8811529,
+  "address": "R SIQUEIRA CAMPOS, 551, CENTRO, PAULISTA, PE"
+ },
+ {
+  "name": "FARMACIA E PERFUMARIA FENIX LTDA",
+  "latitude": -7.9343008,
+  "longitude": -34.8243596,
+  "address": "AV DOUTOR CLAUDIO JOSE GUEIROS LEITE, 2657, JANGA, PAULISTA, PE"
+ },
+ {
+  "name": "FARMACIA GUSTAVO LTDA",
+  "latitude": -7.940844,
+  "longitude": -34.8803539,
+  "address": "R SIQUEIRA CAMPOS, 519 LOJA  01, CENTRO, PAULISTA, PE"
+ },
+ {
+  "name": "FARMACIA JATOBA LTDA ME",
+  "latitude": -7.931733,
+  "longitude": -34.894731,
+  "address": "AV LUIZA CAMAROTTI DE OLIVEIRA, 1015 LOJA  03, ARTUR LUNDGREN I, PAULISTA, PE"
+ },
+ {
+  "name": "GFARMA MEDICAMENTOS EIRELI",
+  "latitude": -7.9272213,
+  "longitude": -34.8516599,
+  "address": "A, 712 LOJA  B, MARANGUAPE II, PAULISTA, PE"
+ },
+ {
+  "name": "J & L FARMACIA LTDA",
+  "latitude": -7.9368324,
+  "longitude": -34.8988023,
+  "address": "LINDOLFO COLLOR,, PARATIBE, PAULISTA, PE"
+ },
+ {
+  "name": "LENI T BEZERRA FARMACIA LTDA",
+  "latitude": -7.9378294,
+  "longitude": -34.824702,
+  "address": "AV DOUTOR CLAUDIO JOSE GUEIROS LEITE, 2290 BLOCO 1                   LOJA  01, JANGA, PAULISTA, PE"
+ },
+ {
+  "name": "MEDICAMENTOS SUPER POPULAR LTDA",
+  "latitude": -7.9000144,
+  "longitude": -34.8411821,
+  "address": "AV ANTONIO CABRAL DE SOUZA, 55, NOSSA SENHORA DA CONCEICAO, PAULISTA, PE"
+ },
+ {
+  "name": "MICHELINE ANDRADE DIAS - ME",
+  "latitude": -7.9182701,
+  "longitude": -34.8208415,
+  "address": "AV DOUTOR CLAUDIO JOSE GUEIROS LEITE, 4514, JANGA, PAULISTA, PE"
+ },
+ {
+  "name": "MONICA CRISTIANE CAMILO DE VASCONCELOS BION - ME",
+  "latitude": -7.949152,
+  "longitude": -34.897444,
+  "address": "AVENIDA PRESIDENTE TANCREDO NEVES, 14,, JARDIM PAULISTA, PAULISTA, PE"
+ },
+ {
+  "name": "VIFARMA COMERCIO DE PRODUTOS FARMACEUTICOS LTDA",
+  "latitude": -7.9193299,
+  "longitude": -34.8253174,
+  "address": "R DOUTOR LUIS IGNACIO DE ANDRADE LIMA, 457 LOJA  02, JANGA, PAULISTA, PE"
+ },
+ {
+  "name": "VJ FARMA LTDA",
+  "latitude": -7.9414456,
+  "longitude": -34.8818398,
+  "address": "R SIQUEIRA CAMPOS, 40 BLOCO B, CENTRO, PAULISTA, PE"
+ },
+ {
+  "name": "A B S ARAGAO & CIA LTDA",
+  "latitude": -8.0693327,
+  "longitude": -34.9084102,
+  "address": "DOS REMEDIOS,, AFOGADOS, RECIFE, PE"
+ },
+ {
+  "name": "A F P TEIXEIRA LTDA",
+  "latitude": -8.0868837,
+  "longitude": -34.952959,
+  "address": "LIBERDADE,, TEJIPIO, RECIFE, PE"
+ },
+ {
+  "name": "A R A PESSOA LIMA LTDA",
+  "latitude": -8.0312131,
+  "longitude": -34.9054738,
+  "address": "EST DO ARRAIAL, 2501 LOJA  05, TAMARINEIRA, RECIFE, PE"
+ },
+ {
+  "name": "AEFARMA MEDICAMENTOS LTDA",
+  "latitude": -8.0942561,
+  "longitude": -34.8852029,
+  "address": "R VINTE E SEIS DE JANEIRO, 543 LOJA 01, PINA, RECIFE, PE"
+ },
+ {
+  "name": "AMERICAN COMERCIO DE PRODUTOS FARMACEUTICOS LTDA",
+  "latitude": -8.0616142,
+  "longitude": -34.9304388,
+  "address": "R TAIM, 246, CORDEIRO, RECIFE, PE"
+ },
+ {
+  "name": "ARRUDA & AZEVEDO COMERCIO DE MEDICAMENTOS LTDA",
+  "latitude": -8.042951,
+  "longitude": -34.8933227,
+  "address": "RUA DO ESPINHEIRO, 657, ESPINHEIRO, RECIFE, PE"
+ },
+ {
+  "name": "CAVALCANTI & BELTRAO COMERCIO DE PRODUTOS FARMACUTICOS LTDA. - ME",
+  "latitude": -8.1284631,
+  "longitude": -34.900546,
+  "address": "AV. CONSELHEIRO AGUIAR, 4734,, BOA VIAGEM, RECIFE, PE"
+ },
+ {
+  "name": "DROGARIA BURGUESA LTDA",
+  "latitude": -8.0697554,
+  "longitude": -34.9283008,
+  "address": "AV GENERAL SAN MARTIN, 1747 LOJA 0001, SAN MARTIN, RECIFE, PE"
+ },
+ {
+  "name": "DROGARIA ESPERANCA DE MEDICAMENTOS LTDA - EPP",
+  "latitude": -8.0483731,
+  "longitude": -34.958986,
+  "address": "R CORONEL PACHECO, 1985 LOJA  A, VARZEA, RECIFE, PE"
+ },
+ {
+  "name": "DROGARIA MADALENA LTDA",
+  "latitude": -8.0509034,
+  "longitude": -34.9003374,
+  "address": "RUA DAS PERNAMBUCANAS, 162,, GRACAS, RECIFE, PE"
+ },
+ {
+  "name": "DROGARIA MADALENA LTDA",
+  "latitude": -8.0515302,
+  "longitude": -34.906242,
+  "address": "AV VISCONDE DE ALBUQUERQUE, 754 LOJA  A, MADALENA, RECIFE, PE"
+ },
+ {
+  "name": "DROGARIA POLIDORO LTDA - EPP",
+  "latitude": -8.0423752,
+  "longitude": -34.9470873,
+  "address": "R GENERAL POLIDORO, 614, VARZEA, RECIFE, PE"
+ },
+ {
+  "name": "DROGARIA SAO PAULO S.A.",
+  "latitude": -8.0457169,
+  "longitude": -34.9100932,
+  "address": "R REAL DA TORRE, 1309, MADALENA, RECIFE, PE"
+ },
+ {
+  "name": "DROGARIA SAO PAULO S.A.",
+  "latitude": -8.1073356,
+  "longitude": -34.8909083,
+  "address": "AV ENGENHEIRO DOMINGOS FERREIRA, 2050 LOJA  TIPO A N. 01 E 02   PAVMTOTERREO              E, BOA VIAGEM, RECIFE, PE"
+ },
+ {
+  "name": "DROGARIA SAO PAULO S.A.",
+  "latitude": -8.0598125,
+  "longitude": -34.8863297,
+  "address": "AV CONDE DA BOA VISTA, 569 LOJAS 05 E 06, BOA VISTA, RECIFE, PE"
+ },
+ {
+  "name": "DROGARIA SAO PAULO S.A.",
+  "latitude": -8.1049312,
+  "longitude": -34.8887832,
+  "address": "AV CONSELHEIRO AGUIAR, 1700, BOA VIAGEM, RECIFE, PE"
+ },
+ {
+  "name": "DROGATIM DROGARIAS LTDA",
+  "latitude": -8.0350625,
+  "longitude": -34.9025786,
+  "address": "AV CONSELHEIRO ROSA E SILVA, 1979, TAMARINEIRA, RECIFE, PE"
+ },
+ {
+  "name": "DROGATIM DROGARIAS LTDA",
+  "latitude": -8.0793408,
+  "longitude": -34.9066467,
+  "address": "EST DOS REMEDIOS, 94, AFOGADOS, RECIFE, PE"
+ },
+ {
+  "name": "EG MEDICAMENTOS LTDA",
+  "latitude": -8.0672792,
+  "longitude": -34.9278654,
+  "address": "AV GENERAL SAN MARTIN, 1793, SAN MARTIN, RECIFE, PE"
+ },
+ {
+  "name": "EMPREENDIMENTOS PAGUE MENOS S.A.",
+  "latitude": -8.0556787,
+  "longitude": -34.9238406,
+  "address": "R GOMES TABORDA, 1365, PRADO, RECIFE, PE"
+ },
+ {
+  "name": "EMPREENDIMENTOS PAGUE MENOS S.A.",
+  "latitude": -8.1148098,
+  "longitude": -34.8949138,
+  "address": "AV ENGENHEIRO DOMINGOS FERREIRA, 1935, PINA, RECIFE, PE"
+ },
+ {
+  "name": "EMPREENDIMENTOS PAGUE MENOS S.A.",
+  "latitude": -8.1278008,
+  "longitude": -34.9000145,
+  "address": "AV CONSELHEIRO AGUIAR, 4635 LOJAS 1 A 4, BOA VIAGEM, RECIFE, PE"
+ },
+ {
+  "name": "EMPREENDIMENTOS PAGUE MENOS S.A.",
+  "latitude": -8.0874081,
+  "longitude": -34.8869059,
+  "address": "AV HERCULANO BANDEIRA, 687 LOJA 01, PINA, RECIFE, PE"
+ },
+ {
+  "name": "EMPREENDIMENTOS PAGUE MENOS S.A.",
+  "latitude": -8.0261337,
+  "longitude": -34.9175595,
+  "address": "R PADRE LEMOS, 66, CASA AMARELA, RECIFE, PE"
+ },
+ {
+  "name": "EMPREENDIMENTOS PAGUE MENOS S.A.",
+  "latitude": -8.0415027,
+  "longitude": -34.8940294,
+  "address": "R QUARENTA E OITO, 569, ESPINHEIRO, RECIFE, PE"
+ },
+ {
+  "name": "EMPREENDIMENTOS PAGUE MENOS S.A.",
+  "latitude": -8.0381219,
+  "longitude": -34.9175223,
+  "address": "AV DEZESSETE DE AGOSTO, 979, SANTANA, RECIFE, PE"
+ },
+ {
+  "name": "EMPREENDIMENTOS PAGUE MENOS S.A.",
+  "latitude": -8.0349405,
+  "longitude": -34.9026208,
+  "address": "AV CONSELHEIRO ROSA E SILVA, 1997, JAQUEIRA, RECIFE, PE"
+ },
+ {
+  "name": "EMPREENDIMENTOS PAGUE MENOS S.A.",
+  "latitude": -8.1320957,
+  "longitude": -34.9059434,
+  "address": "R BARAO DE SOUZA LEAO, 653, BOA VIAGEM, RECIFE, PE"
+ },
+ {
+  "name": "EMPREENDIMENTOS PAGUE MENOS S.A.",
+  "latitude": -8.0939173,
+  "longitude": -34.9293419,
+  "address": "AV RECIFE, 868, IPSEP, RECIFE, PE"
+ },
+ {
+  "name": "EMPREENDIMENTOS PAGUE MENOS S.A.",
+  "latitude": -8.035295,
+  "longitude": -34.9126909,
+  "address": "AV DEZESSETE DE AGOSTO, 358, PARNAMIRIM, RECIFE, PE"
+ },
+ {
+  "name": "EMPREENDIMENTOS PAGUE MENOS S.A.",
+  "latitude": -8.1091567,
+  "longitude": -34.9177033,
+  "address": "R JEAN EMILE FAVRE, 830, IPSEP, RECIFE, PE"
+ },
+ {
+  "name": "EMPREENDIMENTOS PAGUE MENOS S.A.",
+  "latitude": -8.0474982,
+  "longitude": -34.9063279,
+  "address": "RUA JOSE BONIFACIO, 404, TORRE, RECIFE, PE"
+ },
+ {
+  "name": "EMPREENDIMENTOS PAGUE MENOS S/A",
+  "latitude": -8.0420781,
+  "longitude": -34.8910664,
+  "address": "JOAO DE BARROS,, ESPINHEIRO, RECIFE, PE"
+ },
+ {
+  "name": "EMPREENDIMENTOS PAGUE MENOS S/A",
+  "latitude": -8.031282,
+  "longitude": -34.9239948,
+  "address": "R SILVEIRA LOBO, 20, POCO, RECIFE, PE"
+ },
+ {
+  "name": "EMPREENDIMENTOS PAGUE MENOS S/A",
+  "latitude": -8.0281594,
+  "longitude": -34.9125104,
+  "address": "EST DO ARRAIAL, 3359, TAMARINEIRA, RECIFE, PE"
+ },
+ {
+  "name": "EMPREENDIMENTOS PAGUE MENOS S/A",
+  "latitude": -8.1151152,
+  "longitude": -34.8942855,
+  "address": "AV CONSELHEIRO AGUIAR, 2964, BOA VIAGEM, RECIFE, PE"
+ },
+ {
+  "name": "EMPREENDIMENTOS PAGUE MENOS S/A",
+  "latitude": -8.0369927,
+  "longitude": -34.8909476,
+  "address": "EST DE BELEM, 17, ENCRUZILHADA, RECIFE, PE"
+ },
+ {
+  "name": "EMPREENDIMENTOS PAGUE MENOS S/A",
+  "latitude": -8.0604131,
+  "longitude": -34.8843131,
+  "address": "AV CONDE DA BOA VISTA, 332 LOJA-03                   B, BOA VISTA, RECIFE, PE"
+ },
+ {
+  "name": "EMPREENDIMENTOS PAGUE MENOS S/A",
+  "latitude": -8.0475522,
+  "longitude": -34.8885745,
+  "address": "R DOUTOR CARLOS CHAGAS, 72, SANTO AMARO, RECIFE, PE"
+ },
+ {
+  "name": "EMPREENDIMENTOS PAGUE MENOS S/A",
+  "latitude": -8.0629897,
+  "longitude": -34.8956703,
+  "address": "RUA GENERAL JOAQUIM INACIO, 483,, ILHA DO LEITE, RECIFE, PE"
+ },
+ {
+  "name": "EMPREENDIMENTOS PAGUE MENOS S/A",
+  "latitude": -8.0630523,
+  "longitude": -34.8838672,
+  "address": "IMPERATRIZ TEREZA CRISTINA,, BOA VISTA, RECIFE, PE"
+ },
+ {
+  "name": "EMPREENDIMENTOS PAGUE MENOS S/A",
+  "latitude": -8.0506201,
+  "longitude": -34.895798,
+  "address": "R DOUTOR BANDEIRA FILHO, 160, GRACAS, RECIFE, PE"
+ },
+ {
+  "name": "EMPREENDIMENTOS PAGUE MENOS S/A",
+  "latitude": -8.0564604,
+  "longitude": -34.9109244,
+  "address": "AV CAXANGA, 171, MADALENA, RECIFE, PE"
+ },
+ {
+  "name": "EMPREENDIMENTOS PAGUE MENOS S/A",
+  "latitude": -8.1103063,
+  "longitude": -34.8924992,
+  "address": "AV ENGENHEIRO DOMINGOS FERREIRA, 2284, BOA VIAGEM, RECIFE, PE"
+ },
+ {
+  "name": "F AUGUSTO & W FARIAS COMERCIO DE MEDICAMENTOS LTDA",
+  "latitude": -8.1189389,
+  "longitude": -34.9463865,
+  "address": "AV PERNAMBUCO, 410 LOJA  1                         UR-1 IBURA, COHAB, RECIFE, PE"
+ },
+ {
+  "name": "FARMACIA BIS LTDA - ME",
+  "latitude": -8.0704463,
+  "longitude": -34.8793512,
+  "address": "R CORACAO DE MARIA, 140 E NUMERO 146, SAO JOSE, RECIFE, PE"
+ },
+ {
+  "name": "FARMACIA DIARIAMENTE COMERCIO LTDA",
+  "latitude": -8.0193078,
+  "longitude": -34.8943408,
+  "address": "AV BEBERIBE, 2041, AGUA FRIA, RECIFE, PE"
+ },
+ {
+  "name": "FARMAPAULA LTDA - ME",
+  "latitude": -8.0707756,
+  "longitude": -34.9084253,
+  "address": "EST DOS REMEDIOS, 1061, AFOGADOS, RECIFE, PE"
+ },
+ {
+  "name": "GV MEDICAMENTOS LTDA",
+  "latitude": -8.0696226,
+  "longitude": -34.9285685,
+  "address": "AV GENERAL SAN MARTIN, 2090, SAN MARTIN, RECIFE, PE"
+ },
+ {
+  "name": "L M SILVA LTDA ME",
+  "latitude": -8.0201517,
+  "longitude": -34.9216949,
+  "address": "R VASCO DA GAMA, 71 LOJA 1, VASCO DA GAMA, RECIFE, PE"
+ },
+ {
+  "name": "LEONIL COMERCIO DE MEDICAMENTOS LTDA",
+  "latitude": -8.109752,
+  "longitude": -34.918245,
+  "address": "R BLUMENAU, 46, IPSEP, RECIFE, PE"
+ },
+ {
+  "name": "LILIANE BARBOSA DE SOUZA FARMACIA",
+  "latitude": -8.1378436,
+  "longitude": -34.9362736,
+  "address": "MARIA IRENE, 255, JORDAO, RECIFE, PE"
+ },
+ {
+  "name": "LILIANE BARBOSA DE SOUZA FARMACIA",
+  "latitude": -8.0189717,
+  "longitude": -34.909058,
+  "address": "PADRE OLIVEIRA,, ALTO JOSE DO PINHO, RECIFE, PE"
+ },
+ {
+  "name": "M P NEVES MEDICAMENTOS LTDA - ME",
+  "latitude": -8.0636935,
+  "longitude": -34.8792714,
+  "address": "AV GUARARAPES, 131 SALA 0001 B, SANTO ANTONIO, RECIFE, PE"
+ },
+ {
+  "name": "MARIA DO CARMO COLATINO DE BARROS ME",
+  "latitude": -8.1128273,
+  "longitude": -34.919901,
+  "address": "AV RAIMUNDO DINIZ, 116 APTO 0101 BLOCO A, IPSEP, RECIFE, PE"
+ },
+ {
+  "name": "MARIA TEREZINHA PEREIRA JORDAO - ME",
+  "latitude": -8.0089437,
+  "longitude": -34.9249895,
+  "address": "RUA NOVA DESCOBERTA, 1262, CASA AMARELA, RECIFE, PE"
+ },
+ {
+  "name": "MONTE FARMA LTDA",
+  "latitude": -8.0415355,
+  "longitude": -34.9374015,
+  "address": "CAXANGA,, IPUTINGA, RECIFE, PE"
+ },
+ {
+  "name": "MONTE FARMA LTDA",
+  "latitude": -8.0624014,
+  "longitude": -34.896569,
+  "address": "R GENERAL JOAQUIM INACIO, 566 LOJA 0000, PAISSANDU, RECIFE, PE"
+ },
+ {
+  "name": "MONTE FARMA LTDA - ME",
+  "latitude": -8.0422989,
+  "longitude": -34.9352695,
+  "address": "AV CAXANGA, 3282, IPUTINGA, RECIFE, PE"
+ },
+ {
+  "name": "NEX DISTRIBUIDORA DE PRODUTOS FARMACEUTICOS LTDA",
+  "latitude": -8.0628222,
+  "longitude": -34.8963291,
+  "address": "RUA GENERAL JOAQUIM INACIO, 545,, ILHA DO LEITE, RECIFE, PE"
+ },
+ {
+  "name": "NEX DISTRIBUIDORA DE PRODUTOS FARMACEUTICOS LTDA",
+  "latitude": -8.1103063,
+  "longitude": -34.8924992,
+  "address": "AVENIDA ENGENHEIRO DOMINGOS FERREIRA, 2284,, BOA VIAGEM, RECIFE, PE"
+ },
+ {
+  "name": "NEX DISTRIBUIDORA DE PRODUTOS FARMACEUTICOS LTDA",
+  "latitude": -8.0033788,
+  "longitude": -34.8980279,
+  "address": "AVENIDA BEBERIBE, 4665, 4667 E 4671,, BEBERIBE, RECIFE, PE"
+ },
+ {
+  "name": "NEX DISTRIBUIDORA DE PRODUTOS FARMACEUTICOS LTDA",
+  "latitude": -8.0336111,
+  "longitude": -34.9113137,
+  "address": "AVENIDA 17 DE AGOSTO, 126,, PARAMIRIM, RECIFE, PE"
+ },
+ {
+  "name": "NEX DISTRIBUIDORA DE PRODUTOS FARMACEUTICOS LTDA",
+  "latitude": -8.0427844,
+  "longitude": -34.8915939,
+  "address": "RUA DA HORA, 95,, ESPINHEIRO, RECIFE, PE"
+ },
+ {
+  "name": "NEX DISTRIBUIDORA DE PRODUTOS FARMACEUTICOS LTDA",
+  "latitude": -8.0619319,
+  "longitude": -34.8820386,
+  "address": "AV CONDE DA BOA VISTA 88,, BOA VISTA, RECIFE, PE"
+ },
+ {
+  "name": "NEX DISTRIBUIDORA DE PRODUTOS FARMACEUTICOS LTDA",
+  "latitude": -8.1295646,
+  "longitude": -34.900583,
+  "address": "AVENIDA CONSELHEIRO AGUIAR, 4817,, BOA VIAGEM, RECIFE, PE"
+ },
+ {
+  "name": "NEX DISTRIBUIDORA DE PRODUTOS FARMACEUTICOS LTDA",
+  "latitude": -8.1214949,
+  "longitude": -34.898099,
+  "address": "AVENIDA CONSELHEIRO AGUIAR, 3810,, BOA VIAGEM, RECIFE, PE"
+ },
+ {
+  "name": "NEX DISTRIBUIDORA DE PRODUTOS FARMACEUTICOS LTDA",
+  "latitude": -8.1178681,
+  "longitude": -34.8959609,
+  "address": "RUA FELIX DE BRITO MELO, 221,, BOA VIAGEM, RECIFE, PE"
+ },
+ {
+  "name": "NEX DISTRIBUIDORA DE PRODUTOS FARMACEUTICOS LTDA",
+  "latitude": -8.0537612,
+  "longitude": -34.9070146,
+  "address": "RUA JOSE OSORIO, 267,, MADALENA, RECIFE, PE"
+ },
+ {
+  "name": "NEX DISTRIBUIDORA DE PRODUTOS FARMACEUTICOS LTDA",
+  "latitude": -8.1190289,
+  "longitude": -34.9046335,
+  "address": "RUA PADRE CARAPUCEIRO, 777, LOJA BV 246 247,, BOA VIAGEM, RECIFE, PE"
+ },
+ {
+  "name": "NEX DISTRIBUIDORA DE PRODUTOS FARMACEUTICOS S. A.",
+  "latitude": -8.054734,
+  "longitude": -34.9004703,
+  "address": "AMARO BEZERRA,, DERBY, RECIFE, PE"
+ },
+ {
+  "name": "NEX DISTRIBUIDORA DE PRODUTOS FARMACEUTICOS S. A.",
+  "latitude": -8.0377775,
+  "longitude": -34.8914444,
+  "address": "JOAO DE BARROS,, ENCRUZILHADA, RECIFE, PE"
+ },
+ {
+  "name": "NOTAVEL MEDICAMENTOS E PERFUMARIA LTDA - ME",
+  "latitude": -8.040478,
+  "longitude": -34.8945045,
+  "address": "QUARENTA E OITO, 692, AFLITOS, RECIFE, PE"
+ },
+ {
+  "name": "RAIA DROGASIL S/A",
+  "latitude": -8.0332076,
+  "longitude": -34.9108419,
+  "address": "PC DOUTOR LULA CABRAL DE MELO, 30, PARNAMIRIM, RECIFE, PE"
+ },
+ {
+  "name": "RAIA DROGASIL S/A",
+  "latitude": -8.1211962,
+  "longitude": -34.8991681,
+  "address": "AV ENGENHEIRO DOMINGOS FERREIRA, 3746, PINA, RECIFE, PE"
+ },
+ {
+  "name": "RB FARMACEUTICA LTDA - EPP",
+  "latitude": -8.0351791,
+  "longitude": -34.9025399,
+  "address": "AV CONSELHEIRO ROSA E SILVA, 1969, TAMARINEIRA, RECIFE, PE"
+ },
+ {
+  "name": "SOCIEDADE EMPRESARIA LIMITADA",
+  "latitude": -8.0423731,
+  "longitude": -34.9351876,
+  "address": "AV CAXANGA, 3262, IPUTINGA, RECIFE, PE"
+ },
+ {
+  "name": "VJ FARMA LTDA",
+  "latitude": -8.0609027,
+  "longitude": -34.8835347,
+  "address": "AV DA CONDE BOA 250, 250 LOJA 09, BOA VISTA, RECIFE, PE"
+ },
+ {
+  "name": "VJ FARMA LTDA",
+  "latitude": -8.0522255,
+  "longitude": -34.8992873,
+  "address": "R JOAQUIM NABUCO, 330 LOJA: 010203 E 04;, GRACAS, RECIFE, PE"
+ },
+ {
+  "name": "VJ FARMA LTDA",
+  "latitude": -8.0266888,
+  "longitude": -34.9176343,
+  "address": "R PADRE LEMOS, 3954 LOJA: OB/C;, CASA AMARELA, RECIFE, PE"
+ },
+ {
+  "name": "VJ FARMA LTDA",
+  "latitude": -8.0387751,
+  "longitude": -34.8712047,
+  "address": "AV GOVERNADOR AGAMENON MAGALHAES, 153 LOJA 01 2 EXPANSAO, SANTO AMARO, RECIFE, PE"
+ },
+ {
+  "name": "VJ FARMA LTDA",
+  "latitude": -8.1122451,
+  "longitude": -34.8934699,
+  "address": "AV ENGENHEIRO DOMINGOS FERREIRA, 2600, BOA VIAGEM, RECIFE, PE"
+ },
+ {
+  "name": "VJ FARMA LTDA",
+  "latitude": -8.0797418,
+  "longitude": -34.9066227,
+  "address": "EST DOS REMEDIOS, 60 LOJA  58, AFOGADOS, RECIFE, PE"
+ }
+]

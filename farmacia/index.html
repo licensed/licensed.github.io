@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Farmácias Populares Credenciadas — Recife, Paulista e Jaboatão</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
+<style>
+  :root{
+    --ink:#1c2b2d;
+    --paper:#f6f4ee;
+    --pine:#1f6f5c;
+    --pine-dark:#154f42;
+    --clay:#c65d3b;
+    --line:#dcd6c8;
+    --muted:#6b7472;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family:'Segoe UI', system-ui, -apple-system, sans-serif;
+    background:var(--paper);
+    color:var(--ink);
+  }
+  header{
+    padding:18px 22px 14px 22px;
+    border-bottom:1px solid var(--line);
+    background:var(--paper);
+  }
+  header h1{
+    margin:0 0 4px 0;
+    font-size:1.25rem;
+    letter-spacing:-0.01em;
+    font-weight:700;
+    color:var(--pine-dark);
+  }
+  header p{
+    margin:0;
+    font-size:0.85rem;
+    color:var(--muted);
+  }
+  #data-status{
+    font-size:0.72rem;
+    color:var(--muted);
+    margin-top:4px;
+  }
+  .layout{
+    display:flex;
+    height:calc(100vh - 90px);
+    min-height:520px;
+  }
+  #map{
+    flex:1 1 60%;
+    min-width:0;
+  }
+  aside{
+    flex:0 0 360px;
+    max-width:360px;
+    display:flex;
+    flex-direction:column;
+    border-left:1px solid var(--line);
+    background:#fff;
+  }
+  .search-box{
+    padding:14px 16px;
+    border-bottom:1px solid var(--line);
+  }
+  .search-box label{
+    display:block;
+    font-size:0.72rem;
+    text-transform:uppercase;
+    letter-spacing:0.06em;
+    color:var(--muted);
+    margin-bottom:6px;
+    font-weight:600;
+  }
+  .search-row{
+    display:flex;
+    gap:6px;
+  }
+  .search-row input{
+    flex:1;
+    padding:9px 10px;
+    border:1px solid var(--line);
+    border-radius:6px;
+    font-size:0.88rem;
+    outline:none;
+  }
+  .search-row input:focus{
+    border-color:var(--pine);
+  }
+  .search-row button{
+    padding:9px 14px;
+    border:none;
+    border-radius:6px;
+    background:var(--pine);
+    color:#fff;
+    font-size:0.85rem;
+    font-weight:600;
+    cursor:pointer;
+  }
+  .search-row button:hover{ background:var(--pine-dark); }
+  .hint{
+    font-size:0.75rem;
+    color:var(--muted);
+    margin-top:8px;
+    line-height:1.4;
+  }
+  #home-status{
+    font-size:0.8rem;
+    margin-top:8px;
+    min-height:18px;
+  }
+  #home-status.ok{ color:var(--pine-dark); font-weight:600; }
+  #home-status.err{ color:var(--clay); font-weight:600; }
+  .list-header{
+    padding:10px 16px 6px 16px;
+    font-size:0.72rem;
+    text-transform:uppercase;
+    letter-spacing:0.06em;
+    color:var(--muted);
+    font-weight:600;
+    border-bottom:1px solid var(--line);
+  }
+  #pharmacy-list{
+    flex:1;
+    overflow-y:auto;
+    padding:4px 0;
+  }
+  .card{
+    padding:10px 16px;
+    border-bottom:1px solid var(--line);
+    cursor:pointer;
+    transition:background 0.12s;
+  }
+  .card:hover{ background:#f4f8f6; }
+  .card.active{ background:#eaf3ef; border-left:3px solid var(--pine); }
+  .card .name{
+    font-size:0.86rem;
+    font-weight:700;
+    color:var(--ink);
+    margin-bottom:2px;
+  }
+  .card .addr{
+    font-size:0.76rem;
+    color:var(--muted);
+    line-height:1.3;
+  }
+  .card .dist{
+    display:inline-block;
+    margin-top:5px;
+    font-size:0.74rem;
+    font-weight:700;
+    color:var(--pine-dark);
+    background:#e3efe9;
+    padding:2px 7px;
+    border-radius:10px;
+  }
+  .leaflet-popup-content{ font-size:0.85rem; }
+  .leaflet-popup-content b{ color:var(--pine-dark); }
+  @media (max-width:760px){
+    .layout{ flex-direction:column; height:auto; }
+    #map{ height:52vh; }
+    aside{ max-width:none; border-left:none; border-top:1px solid var(--line); }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Farmácias Populares Credenciadas (PFPB) — Recife, Paulista e Jaboatão dos Guararapes</h1>
+  <p>Farmácias credenciadas ao Programa Farmácia Popular do Brasil (dados de 01/06/2026, Ministério da Saúde). Informe seu endereço para ver a distância até cada uma.</p>
+  <div id="data-status"></div>
+</header>
+
+<div class="layout">
+  <div id="map"></div>
+  <aside>
+    <div class="search-box">
+      <label for="address-input">Seu endereço (casa)</label>
+      <div class="search-row">
+        <input id="address-input" type="text" placeholder="Ex: Rua da Aurora, Recife" />
+        <button id="search-btn">Buscar</button>
+      </div>
+      <div id="home-status"></div>
+      <div class="hint">Dica: você também pode clicar diretamente no mapa para marcar sua casa.</div>
+    </div>
+    <div class="list-header" id="list-title">Carregando farmácias…</div>
+    <div id="pharmacy-list"></div>
+  </aside>
+</div>
+
+<script>
+// Snapshot embutido, usado apenas se farmacias_pe.json não puder ser
+// carregado (por exemplo, ao abrir este HTML sozinho sem o arquivo
+// farmacias_pe.json na mesma pasta, ou via duplo-clique sem servidor local).
+const PHARMACIES_FALLBACK = [{"name": "ACCIOLY COMERCIO FARMACEUTICO LTDA", "latitude": -8.1479905, "longitude": -34.9157437, "address": "AV ARMINDO MOURA, 391 LOJA 02, PIEDADE, JABOATAO DOS GUARARAPES, PE"}, {"name": "D C DA ROCHA LTDA - EPP", "latitude": -8.0980008, "longitude": -34.9683721, "address": "AV GENERAL MANOEL RABELO, 5179, CAVALEIRO, JABOATAO DOS GUARARAPES, PE"}, {"name": "DROGARIA SAO PAULO S.A.", "latitude": -8.1894618, "longitude": -34.9311476, "address": "R DOUTOR ANICETO VAREJAO, 262 SALA  01, PIEDADE, JABOATAO DOS GUARARAPES, PE"}, {"name": "EMPREENDIMENTOS PAGUE MENOS S.A.", "latitude": -8.1629756, "longitude": -34.9255721, "address": "AV BARRETO DE MENEZES, 419, CAJUEIRO SECO, JABOATAO DOS GUARARAPES, PE"}, {"name": "EMPREENDIMENTOS PAGUE MENOS S/A", "latitude": -8.1796581, "longitude": -34.9179507, "address": "AV BERNARDO VIEIRA DE MELO, 3000, PIEDADE, JABOATAO DOS GUARARAPES, PE"}, {"name": "EMPREENDIMENTOS PAGUE MENOS S/A", "latitude": -8.1915094, "longitude": -34.9194434, "address": "R DOUTOR ANICETO VAREJAO, 100 LJ 0001, CANDEIAS, JABOATAO DOS GUARARAPES, PE"}, {"name": "EMPREENDIMENTOS PAGUE MENOS S/A", "latitude": -8.1766183, "longitude": -34.9187565, "address": "AV AYRTON SENNA DA SILVA, 2674, PIEDADE, JABOATAO DOS GUARARAPES, PE"}, {"name": "FARMACIA TALENTO LTDA", "latitude": -8.1132305, "longitude": -35.0176469, "address": "CORONEL CAMARA LIMA,, CENTRO, JABOATAO DOS GUARARAPES, PE"}, {"name": "JOSIANE BARBOSA SOUZA", "latitude": -8.0817622, "longitude": -34.9762831, "address": "R HELIO LOBO COSTA, 85-A, CAVALEIRO, JABOATAO DOS GUARARAPES, PE"}, {"name": "M F RUFINO DA SILVA FARMACIA - ME", "latitude": -8.0762047, "longitude": -35.0000039, "address": "AV DOLORES DURAN, 68, CURADO, JABOATAO DOS GUARARAPES, PE"}, {"name": "NEX DISTRIBUIDORA DE PRODUTOS FARMACEUTICOS LTDA", "latitude": -8.1728674, "longitude": -34.9176799, "address": "AVENIDA AYRTON SENNA DA SILVA, 2221,, PIEDADE, JABOATAO DOS GUARARAPES, PE"}, {"name": "NEX DISTRIBUIDORA DE PRODUTOS FARMACEUTICOS LTDA", "latitude": -8.1902592, "longitude": -34.9197785, "address": "BERNARDO VIEIRA DE MELO, 4146, PIEDADE, JABOATAO DOS GUARARAPES, PE"}, {"name": "RAIA DROGASIL S/A", "latitude": -8.0908598, "longitude": -34.9735267, "address": "GOVERNADOR AGAMENON MAGALHAES,, CAVALEIRO, JABOATAO DOS GUARARAPES, PE"}, {"name": "TABOCAS PRODUTOS FARMACEUTICOS LTDA", "latitude": -8.1127009, "longitude": -35.0186435, "address": "BARAO DE LUCENA,, CENTRO, JABOATAO DOS GUARARAPES, PE"}, {"name": "VJ FARMA LTDA", "latitude": -8.1628941, "longitude": -34.9256669, "address": "AV BARRETO DE MENEZES, 381 LJ 0001 LOJA 000E         LOJA 000C, CAJUEIRO SECO, JABOATAO DOS GUARARAPES, PE"}, {"name": "ZN FARMA LTDA", "latitude": -8.1121775, "longitude": -35.0179775, "address": "PC NOSSA SENHORA DO ROSARIO, 472, CENTRO, JABOATAO DOS GUARARAPES, PE"}, {"name": "EMPREENDIMENTOS PAGUE MENOS S/A", "latitude": -7.9325854, "longitude": -34.8240822, "address": "AV DOUTOR CLAUDIO JOSE GUEIROS LEITE, 2855, JANGA, PAULISTA, PE"}, {"name": "EMPREENDIMENTOS PAGUE MENOS S/A", "latitude": -7.9415135, "longitude": -34.8811529, "address": "R SIQUEIRA CAMPOS, 551, CENTRO, PAULISTA, PE"}, {"name": "FARMACIA E PERFUMARIA FENIX LTDA", "latitude": -7.9343008, "longitude": -34.8243596, "address": "AV DOUTOR CLAUDIO JOSE GUEIROS LEITE, 2657, JANGA, PAULISTA, PE"}, {"name": "FARMACIA GUSTAVO LTDA", "latitude": -7.940844, "longitude": -34.8803539, "address": "R SIQUEIRA CAMPOS, 519 LOJA  01, CENTRO, PAULISTA, PE"}, {"name": "FARMACIA JATOBA LTDA ME", "latitude": -7.931733, "longitude": -34.894731, "address": "AV LUIZA CAMAROTTI DE OLIVEIRA, 1015 LOJA  03, ARTUR LUNDGREN I, PAULISTA, PE"}, {"name": "GFARMA MEDICAMENTOS EIRELI", "latitude": -7.9272213, "longitude": -34.8516599, "address": "A, 712 LOJA  B, MARANGUAPE II, PAULISTA, PE"}, {"name": "J & L FARMACIA LTDA", "latitude": -7.9368324, "longitude": -34.8988023, "address": "LINDOLFO COLLOR,, PARATIBE, PAULISTA, PE"}, {"name": "LENI T BEZERRA FARMACIA LTDA", "latitude": -7.9378294, "longitude": -34.824702, "address": "AV DOUTOR CLAUDIO JOSE GUEIROS LEITE, 2290 BLOCO 1                   LOJA  01, JANGA, PAULISTA, PE"}, {"name": "MEDICAMENTOS SUPER POPULAR LTDA", "latitude": -7.9000144, "longitude": -34.8411821, "address": "AV ANTONIO CABRAL DE SOUZA, 55, NOSSA SENHORA DA CONCEICAO, PAULISTA, PE"}, {"name": "MICHELINE ANDRADE DIAS - ME", "latitude": -7.9182701, "longitude": -34.8208415, "address": "AV DOUTOR CLAUDIO JOSE GUEIROS LEITE, 4514, JANGA, PAULISTA, PE"}, {"name": "MONICA CRISTIANE CAMILO DE VASCONCELOS BION - ME", "latitude": -7.949152, "longitude": -34.897444, "address": "AVENIDA PRESIDENTE TANCREDO NEVES, 14,, JARDIM PAULISTA, PAULISTA, PE"}, {"name": "VIFARMA COMERCIO DE PRODUTOS FARMACEUTICOS LTDA", "latitude": -7.9193299, "longitude": -34.8253174, "address": "R DOUTOR LUIS IGNACIO DE ANDRADE LIMA, 457 LOJA  02, JANGA, PAULISTA, PE"}, {"name": "VJ FARMA LTDA", "latitude": -7.9414456, "longitude": -34.8818398, "address": "R SIQUEIRA CAMPOS, 40 BLOCO B, CENTRO, PAULISTA, PE"}, {"name": "A B S ARAGAO & CIA LTDA", "latitude": -8.0693327, "longitude": -34.9084102, "address": "DOS REMEDIOS,, AFOGADOS, RECIFE, PE"}, {"name": "A F P TEIXEIRA LTDA", "latitude": -8.0868837, "longitude": -34.952959, "address": "LIBERDADE,, TEJIPIO, RECIFE, PE"}, {"name": "A R A PESSOA LIMA LTDA", "latitude": -8.0312131, "longitude": -34.9054738, "address": "EST DO ARRAIAL, 2501 LOJA  05, TAMARINEIRA, RECIFE, PE"}, {"name": "AEFARMA MEDICAMENTOS LTDA", "latitude": -8.0942561, "longitude": -34.8852029, "address": "R VINTE E SEIS DE JANEIRO, 543 LOJA 01, PINA, RECIFE, PE"}, {"name": "AMERICAN COMERCIO DE PRODUTOS FARMACEUTICOS LTDA", "latitude": -8.0616142, "longitude": -34.9304388, "address": "R TAIM, 246, CORDEIRO, RECIFE, PE"}, {"name": "ARRUDA & AZEVEDO COMERCIO DE MEDICAMENTOS LTDA", "latitude": -8.042951, "longitude": -34.8933227, "address": "RUA DO ESPINHEIRO, 657, ESPINHEIRO, RECIFE, PE"}, {"name": "CAVALCANTI & BELTRAO COMERCIO DE PRODUTOS FARMACUTICOS LTDA. - ME", "latitude": -8.1284631, "longitude": -34.900546, "address": "AV. CONSELHEIRO AGUIAR, 4734,, BOA VIAGEM, RECIFE, PE"}, {"name": "DROGARIA BURGUESA LTDA", "latitude": -8.0697554, "longitude": -34.9283008, "address": "AV GENERAL SAN MARTIN, 1747 LOJA 0001, SAN MARTIN, RECIFE, PE"}, {"name": "DROGARIA ESPERANCA DE MEDICAMENTOS LTDA - EPP", "latitude": -8.0483731, "longitude": -34.958986, "address": "R CORONEL PACHECO, 1985 LOJA  A, VARZEA, RECIFE, PE"}, {"name": "DROGARIA MADALENA LTDA", "latitude": -8.0509034, "longitude": -34.9003374, "address": "RUA DAS PERNAMBUCANAS, 162,, GRACAS, RECIFE, PE"}, {"name": "DROGARIA MADALENA LTDA", "latitude": -8.0515302, "longitude": -34.906242, "address": "AV VISCONDE DE ALBUQUERQUE, 754 LOJA  A, MADALENA, RECIFE, PE"}, {"name": "DROGARIA POLIDORO LTDA - EPP", "latitude": -8.0423752, "longitude": -34.9470873, "address": "R GENERAL POLIDORO, 614, VARZEA, RECIFE, PE"}, {"name": "DROGARIA SAO PAULO S.A.", "latitude": -8.0457169, "longitude": -34.9100932, "address": "R REAL DA TORRE, 1309, MADALENA, RECIFE, PE"}, {"name": "DROGARIA SAO PAULO S.A.", "latitude": -8.1073356, "longitude": -34.8909083, "address": "AV ENGENHEIRO DOMINGOS FERREIRA, 2050 LOJA  TIPO A N. 01 E 02   PAVMTOTERREO              E, BOA VIAGEM, RECIFE, PE"}, {"name": "DROGARIA SAO PAULO S.A.", "latitude": -8.0598125, "longitude": -34.8863297, "address": "AV CONDE DA BOA VISTA, 569 LOJAS 05 E 06, BOA VISTA, RECIFE, PE"}, {"name": "DROGARIA SAO PAULO S.A.", "latitude": -8.1049312, "longitude": -34.8887832, "address": "AV CONSELHEIRO AGUIAR, 1700, BOA VIAGEM, RECIFE, PE"}, {"name": "DROGATIM DROGARIAS LTDA", "latitude": -8.0350625, "longitude": -34.9025786, "address": "AV CONSELHEIRO ROSA E SILVA, 1979, TAMARINEIRA, RECIFE, PE"}, {"name": "DROGATIM DROGARIAS LTDA", "latitude": -8.0793408, "longitude": -34.9066467, "address": "EST DOS REMEDIOS, 94, AFOGADOS, RECIFE, PE"}, {"name": "EG MEDICAMENTOS LTDA", "latitude": -8.0672792, "longitude": -34.9278654, "address": "AV GENERAL SAN MARTIN, 1793, SAN MARTIN, RECIFE, PE"}, {"name": "EMPREENDIMENTOS PAGUE MENOS S.A.", "latitude": -8.0556787, "longitude": -34.9238406, "address": "R GOMES TABORDA, 1365, PRADO, RECIFE, PE"}, {"name": "EMPREENDIMENTOS PAGUE MENOS S.A.", "latitude": -8.1148098, "longitude": -34.8949138, "address": "AV ENGENHEIRO DOMINGOS FERREIRA, 1935, PINA, RECIFE, PE"}, {"name": "EMPREENDIMENTOS PAGUE MENOS S.A.", "latitude": -8.1278008, "longitude": -34.9000145, "address": "AV CONSELHEIRO AGUIAR, 4635 LOJAS 1 A 4, BOA VIAGEM, RECIFE, PE"}, {"name": "EMPREENDIMENTOS PAGUE MENOS S.A.", "latitude": -8.0874081, "longitude": -34.8869059, "address": "AV HERCULANO BANDEIRA, 687 LOJA 01, PINA, RECIFE, PE"}, {"name": "EMPREENDIMENTOS PAGUE MENOS S.A.", "latitude": -8.0261337, "longitude": -34.9175595, "address": "R PADRE LEMOS, 66, CASA AMARELA, RECIFE, PE"}, {"name": "EMPREENDIMENTOS PAGUE MENOS S.A.", "latitude": -8.0415027, "longitude": -34.8940294, "address": "R QUARENTA E OITO, 569, ESPINHEIRO, RECIFE, PE"}, {"name": "EMPREENDIMENTOS PAGUE MENOS S.A.", "latitude": -8.0381219, "longitude": -34.9175223, "address": "AV DEZESSETE DE AGOSTO, 979, SANTANA, RECIFE, PE"}, {"name": "EMPREENDIMENTOS PAGUE MENOS S.A.", "latitude": -8.0349405, "longitude": -34.9026208, "address": "AV CONSELHEIRO ROSA E SILVA, 1997, JAQUEIRA, RECIFE, PE"}, {"name": "EMPREENDIMENTOS PAGUE MENOS S.A.", "latitude": -8.1320957, "longitude": -34.9059434, "address": "R BARAO DE SOUZA LEAO, 653, BOA VIAGEM, RECIFE, PE"}, {"name": "EMPREENDIMENTOS PAGUE MENOS S.A.", "latitude": -8.0939173, "longitude": -34.9293419, "address": "AV RECIFE, 868, IPSEP, RECIFE, PE"}, {"name": "EMPREENDIMENTOS PAGUE MENOS S.A.", "latitude": -8.035295, "longitude": -34.9126909, "address": "AV DEZESSETE DE AGOSTO, 358, PARNAMIRIM, RECIFE, PE"}, {"name": "EMPREENDIMENTOS PAGUE MENOS S.A.", "latitude": -8.1091567, "longitude": -34.9177033, "address": "R JEAN EMILE FAVRE, 830, IPSEP, RECIFE, PE"}, {"name": "EMPREENDIMENTOS PAGUE MENOS S.A.", "latitude": -8.0474982, "longitude": -34.9063279, "address": "RUA JOSE BONIFACIO, 404, TORRE, RECIFE, PE"}, {"name": "EMPREENDIMENTOS PAGUE MENOS S/A", "latitude": -8.0420781, "longitude": -34.8910664, "address": "JOAO DE BARROS,, ESPINHEIRO, RECIFE, PE"}, {"name": "EMPREENDIMENTOS PAGUE MENOS S/A", "latitude": -8.031282, "longitude": -34.9239948, "address": "R SILVEIRA LOBO, 20, POCO, RECIFE, PE"}, {"name": "EMPREENDIMENTOS PAGUE MENOS S/A", "latitude": -8.0281594, "longitude": -34.9125104, "address": "EST DO ARRAIAL, 3359, TAMARINEIRA, RECIFE, PE"}, {"name": "EMPREENDIMENTOS PAGUE MENOS S/A", "latitude": -8.1151152, "longitude": -34.8942855, "address": "AV CONSELHEIRO AGUIAR, 2964, BOA VIAGEM, RECIFE, PE"}, {"name": "EMPREENDIMENTOS PAGUE MENOS S/A", "latitude": -8.0369927, "longitude": -34.8909476, "address": "EST DE BELEM, 17, ENCRUZILHADA, RECIFE, PE"}, {"name": "EMPREENDIMENTOS PAGUE MENOS S/A", "latitude": -8.0604131, "longitude": -34.8843131, "address": "AV CONDE DA BOA VISTA, 332 LOJA-03                   B, BOA VISTA, RECIFE, PE"}, {"name": "EMPREENDIMENTOS PAGUE MENOS S/A", "latitude": -8.0475522, "longitude": -34.8885745, "address": "R DOUTOR CARLOS CHAGAS, 72, SANTO AMARO, RECIFE, PE"}, {"name": "EMPREENDIMENTOS PAGUE MENOS S/A", "latitude": -8.0629897, "longitude": -34.8956703, "address": "RUA GENERAL JOAQUIM INACIO, 483,, ILHA DO LEITE, RECIFE, PE"}, {"name": "EMPREENDIMENTOS PAGUE MENOS S/A", "latitude": -8.0630523, "longitude": -34.8838672, "address": "IMPERATRIZ TEREZA CRISTINA,, BOA VISTA, RECIFE, PE"}, {"name": "EMPREENDIMENTOS PAGUE MENOS S/A", "latitude": -8.0506201, "longitude": -34.895798, "address": "R DOUTOR BANDEIRA FILHO, 160, GRACAS, RECIFE, PE"}, {"name": "EMPREENDIMENTOS PAGUE MENOS S/A", "latitude": -8.0564604, "longitude": -34.9109244, "address": "AV CAXANGA, 171, MADALENA, RECIFE, PE"}, {"name": "EMPREENDIMENTOS PAGUE MENOS S/A", "latitude": -8.1103063, "longitude": -34.8924992, "address": "AV ENGENHEIRO DOMINGOS FERREIRA, 2284, BOA VIAGEM, RECIFE, PE"}, {"name": "F AUGUSTO & W FARIAS COMERCIO DE MEDICAMENTOS LTDA", "latitude": -8.1189389, "longitude": -34.9463865, "address": "AV PERNAMBUCO, 410 LOJA  1                         UR-1 IBURA, COHAB, RECIFE, PE"}, {"name": "FARMACIA BIS LTDA - ME", "latitude": -8.0704463, "longitude": -34.8793512, "address": "R CORACAO DE MARIA, 140 E NUMERO 146, SAO JOSE, RECIFE, PE"}, {"name": "FARMACIA DIARIAMENTE COMERCIO LTDA", "latitude": -8.0193078, "longitude": -34.8943408, "address": "AV BEBERIBE, 2041, AGUA FRIA, RECIFE, PE"}, {"name": "FARMAPAULA LTDA - ME", "latitude": -8.0707756, "longitude": -34.9084253, "address": "EST DOS REMEDIOS, 1061, AFOGADOS, RECIFE, PE"}, {"name": "GV MEDICAMENTOS LTDA", "latitude": -8.0696226, "longitude": -34.9285685, "address": "AV GENERAL SAN MARTIN, 2090, SAN MARTIN, RECIFE, PE"}, {"name": "L M SILVA LTDA ME", "latitude": -8.0201517, "longitude": -34.9216949, "address": "R VASCO DA GAMA, 71 LOJA 1, VASCO DA GAMA, RECIFE, PE"}, {"name": "LEONIL COMERCIO DE MEDICAMENTOS LTDA", "latitude": -8.109752, "longitude": -34.918245, "address": "R BLUMENAU, 46, IPSEP, RECIFE, PE"}, {"name": "LILIANE BARBOSA DE SOUZA FARMACIA", "latitude": -8.1378436, "longitude": -34.9362736, "address": "MARIA IRENE, 255, JORDAO, RECIFE, PE"}, {"name": "LILIANE BARBOSA DE SOUZA FARMACIA", "latitude": -8.0189717, "longitude": -34.909058, "address": "PADRE OLIVEIRA,, ALTO JOSE DO PINHO, RECIFE, PE"}, {"name": "M P NEVES MEDICAMENTOS LTDA - ME", "latitude": -8.0636935, "longitude": -34.8792714, "address": "AV GUARARAPES, 131 SALA 0001 B, SANTO ANTONIO, RECIFE, PE"}, {"name": "MARIA DO CARMO COLATINO DE BARROS ME", "latitude": -8.1128273, "longitude": -34.919901, "address": "AV RAIMUNDO DINIZ, 116 APTO 0101 BLOCO A, IPSEP, RECIFE, PE"}, {"name": "MARIA TEREZINHA PEREIRA JORDAO - ME", "latitude": -8.0089437, "longitude": -34.9249895, "address": "RUA NOVA DESCOBERTA, 1262, CASA AMARELA, RECIFE, PE"}, {"name": "MONTE FARMA LTDA", "latitude": -8.0415355, "longitude": -34.9374015, "address": "CAXANGA,, IPUTINGA, RECIFE, PE"}, {"name": "MONTE FARMA LTDA", "latitude": -8.0624014, "longitude": -34.896569, "address": "R GENERAL JOAQUIM INACIO, 566 LOJA 0000, PAISSANDU, RECIFE, PE"}, {"name": "MONTE FARMA LTDA - ME", "latitude": -8.0422989, "longitude": -34.9352695, "address": "AV CAXANGA, 3282, IPUTINGA, RECIFE, PE"}, {"name": "NEX DISTRIBUIDORA DE PRODUTOS FARMACEUTICOS LTDA", "latitude": -8.0628222, "longitude": -34.8963291, "address": "RUA GENERAL JOAQUIM INACIO, 545,, ILHA DO LEITE, RECIFE, PE"}, {"name": "NEX DISTRIBUIDORA DE PRODUTOS FARMACEUTICOS LTDA", "latitude": -8.1103063, "longitude": -34.8924992, "address": "AVENIDA ENGENHEIRO DOMINGOS FERREIRA, 2284,, BOA VIAGEM, RECIFE, PE"}, {"name": "NEX DISTRIBUIDORA DE PRODUTOS FARMACEUTICOS LTDA", "latitude": -8.0033788, "longitude": -34.8980279, "address": "AVENIDA BEBERIBE, 4665, 4667 E 4671,, BEBERIBE, RECIFE, PE"}, {"name": "NEX DISTRIBUIDORA DE PRODUTOS FARMACEUTICOS LTDA", "latitude": -8.0336111, "longitude": -34.9113137, "address": "AVENIDA 17 DE AGOSTO, 126,, PARAMIRIM, RECIFE, PE"}, {"name": "NEX DISTRIBUIDORA DE PRODUTOS FARMACEUTICOS LTDA", "latitude": -8.0427844, "longitude": -34.8915939, "address": "RUA DA HORA, 95,, ESPINHEIRO, RECIFE, PE"}, {"name": "NEX DISTRIBUIDORA DE PRODUTOS FARMACEUTICOS LTDA", "latitude": -8.0619319, "longitude": -34.8820386, "address": "AV CONDE DA BOA VISTA 88,, BOA VISTA, RECIFE, PE"}, {"name": "NEX DISTRIBUIDORA DE PRODUTOS FARMACEUTICOS LTDA", "latitude": -8.1295646, "longitude": -34.900583, "address": "AVENIDA CONSELHEIRO AGUIAR, 4817,, BOA VIAGEM, RECIFE, PE"}, {"name": "NEX DISTRIBUIDORA DE PRODUTOS FARMACEUTICOS LTDA", "latitude": -8.1214949, "longitude": -34.898099, "address": "AVENIDA CONSELHEIRO AGUIAR, 3810,, BOA VIAGEM, RECIFE, PE"}, {"name": "NEX DISTRIBUIDORA DE PRODUTOS FARMACEUTICOS LTDA", "latitude": -8.1178681, "longitude": -34.8959609, "address": "RUA FELIX DE BRITO MELO, 221,, BOA VIAGEM, RECIFE, PE"}, {"name": "NEX DISTRIBUIDORA DE PRODUTOS FARMACEUTICOS LTDA", "latitude": -8.0537612, "longitude": -34.9070146, "address": "RUA JOSE OSORIO, 267,, MADALENA, RECIFE, PE"}, {"name": "NEX DISTRIBUIDORA DE PRODUTOS FARMACEUTICOS LTDA", "latitude": -8.1190289, "longitude": -34.9046335, "address": "RUA PADRE CARAPUCEIRO, 777, LOJA BV 246 247,, BOA VIAGEM, RECIFE, PE"}, {"name": "NEX DISTRIBUIDORA DE PRODUTOS FARMACEUTICOS S. A.", "latitude": -8.054734, "longitude": -34.9004703, "address": "AMARO BEZERRA,, DERBY, RECIFE, PE"}, {"name": "NEX DISTRIBUIDORA DE PRODUTOS FARMACEUTICOS S. A.", "latitude": -8.0377775, "longitude": -34.8914444, "address": "JOAO DE BARROS,, ENCRUZILHADA, RECIFE, PE"}, {"name": "NOTAVEL MEDICAMENTOS E PERFUMARIA LTDA - ME", "latitude": -8.040478, "longitude": -34.8945045, "address": "QUARENTA E OITO, 692, AFLITOS, RECIFE, PE"}, {"name": "RAIA DROGASIL S/A", "latitude": -8.0332076, "longitude": -34.9108419, "address": "PC DOUTOR LULA CABRAL DE MELO, 30, PARNAMIRIM, RECIFE, PE"}, {"name": "RAIA DROGASIL S/A", "latitude": -8.1211962, "longitude": -34.8991681, "address": "AV ENGENHEIRO DOMINGOS FERREIRA, 3746, PINA, RECIFE, PE"}, {"name": "RB FARMACEUTICA LTDA - EPP", "latitude": -8.0351791, "longitude": -34.9025399, "address": "AV CONSELHEIRO ROSA E SILVA, 1969, TAMARINEIRA, RECIFE, PE"}, {"name": "SOCIEDADE EMPRESARIA LIMITADA", "latitude": -8.0423731, "longitude": -34.9351876, "address": "AV CAXANGA, 3262, IPUTINGA, RECIFE, PE"}, {"name": "VJ FARMA LTDA", "latitude": -8.0609027, "longitude": -34.8835347, "address": "AV DA CONDE BOA 250, 250 LOJA 09, BOA VISTA, RECIFE, PE"}, {"name": "VJ FARMA LTDA", "latitude": -8.0522255, "longitude": -34.8992873, "address": "R JOAQUIM NABUCO, 330 LOJA: 010203 E 04;, GRACAS, RECIFE, PE"}, {"name": "VJ FARMA LTDA", "latitude": -8.0266888, "longitude": -34.9176343, "address": "R PADRE LEMOS, 3954 LOJA: OB/C;, CASA AMARELA, RECIFE, PE"}, {"name": "VJ FARMA LTDA", "latitude": -8.0387751, "longitude": -34.8712047, "address": "AV GOVERNADOR AGAMENON MAGALHAES, 153 LOJA 01 2 EXPANSAO, SANTO AMARO, RECIFE, PE"}, {"name": "VJ FARMA LTDA", "latitude": -8.1122451, "longitude": -34.8934699, "address": "AV ENGENHEIRO DOMINGOS FERREIRA, 2600, BOA VIAGEM, RECIFE, PE"}, {"name": "VJ FARMA LTDA", "latitude": -8.0797418, "longitude": -34.9066227, "address": "EST DOS REMEDIOS, 60 LOJA  58, AFOGADOS, RECIFE, PE"}];
+
+let PHARMACIES = PHARMACIES_FALLBACK;
+
+const map = L.map('map', { zoomControl: true }).setView([-8.05, -34.90], 12);
+L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+  maxZoom: 19,
+  subdomains: 'abcd',
+  attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
+}).addTo(map);
+
+const pharmacyIcon = L.divIcon({
+  className: '',
+  html: '<div style="background:#1f6f5c;width:14px;height:14px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);border:2px solid #fff;box-shadow:0 1px 3px rgba(0,0,0,0.4);"></div>',
+  iconSize: [14,14],
+  iconAnchor: [7,14]
+});
+
+const homeIcon = L.divIcon({
+  className: '',
+  html: '<div style="background:#c65d3b;width:20px;height:20px;border-radius:50%;border:3px solid #fff;box-shadow:0 2px 5px rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;"></div>',
+  iconSize: [20,20],
+  iconAnchor: [10,10]
+});
+
+let homeMarker = null;
+let homeLatLng = null;
+let pharmacyMarkers = [];
+
+function haversine(lat1, lon1, lat2, lon2){
+  const R = 6371;
+  const dLat = (lat2-lat1) * Math.PI/180;
+  const dLon = (lon2-lon1) * Math.PI/180;
+  const a = Math.sin(dLat/2)**2 + Math.cos(lat1*Math.PI/180)*Math.cos(lat2*Math.PI/180)*Math.sin(dLon/2)**2;
+  const c = 2*Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+  return R*c;
+}
+
+function renderMarkers(){
+  pharmacyMarkers.forEach(m => map.removeLayer(m));
+  pharmacyMarkers = [];
+  PHARMACIES.forEach((p, idx) => {
+    const marker = L.marker([p.latitude, p.longitude], { icon: pharmacyIcon }).addTo(map);
+    marker.bindPopup(`<b>${p.name}</b><br>${p.address}`);
+    marker.on('click', () => highlightCard(idx));
+    pharmacyMarkers.push(marker);
+  });
+}
+
+function highlightCard(idx){
+  document.querySelectorAll('.card').forEach(c => c.classList.remove('active'));
+  const card = document.getElementById('card-' + idx);
+  if(card){
+    card.classList.add('active');
+    card.scrollIntoView({behavior:'smooth', block:'center'});
+  }
+}
+
+function renderList(){
+  const listEl = document.getElementById('pharmacy-list');
+  const titleEl = document.getElementById('list-title');
+  listEl.innerHTML = '';
+
+  let items = PHARMACIES.map((p, idx) => ({...p, idx}));
+
+  if(homeLatLng){
+    items.forEach(p => {
+      p.dist = haversine(homeLatLng.lat, homeLatLng.lng, p.latitude, p.longitude);
+    });
+    items.sort((a,b) => a.dist - b.dist);
+    titleEl.textContent = `${PHARMACIES.length} farmácias — ordenadas por distância`;
+  } else {
+    items.sort((a,b) => a.name.localeCompare(b.name));
+    titleEl.textContent = `${PHARMACIES.length} farmácias (ordem alfabética)`;
+  }
+
+  items.forEach(p => {
+    const div = document.createElement('div');
+    div.className = 'card';
+    div.id = 'card-' + p.idx;
+    div.innerHTML = `
+      <div class="name">${p.name}</div>
+      <div class="addr">${p.address}</div>
+      ${p.dist !== undefined ? `<div class="dist">${p.dist.toFixed(1)} km em linha reta</div>` : ''}
+    `;
+    div.addEventListener('click', () => {
+      map.setView([p.latitude, p.longitude], 16);
+      pharmacyMarkers[p.idx].openPopup();
+      highlightCard(p.idx);
+    });
+    listEl.appendChild(div);
+  });
+}
+
+function setHome(lat, lng, label){
+  homeLatLng = { lat, lng };
+  if(homeMarker) map.removeLayer(homeMarker);
+  homeMarker = L.marker([lat, lng], { icon: homeIcon, draggable: true }).addTo(map);
+  homeMarker.bindPopup(`<b>Minha casa</b><br>${label || ''}`).openPopup();
+  homeMarker.on('dragend', (e) => {
+    const pos = e.target.getLatLng();
+    homeLatLng = { lat: pos.lat, lng: pos.lng };
+    renderList();
+  });
+  map.setView([lat, lng], 13);
+  renderList();
+}
+
+document.getElementById('search-btn').addEventListener('click', async () => {
+  const query = document.getElementById('address-input').value.trim();
+  const statusEl = document.getElementById('home-status');
+  if(!query){ return; }
+  statusEl.textContent = 'Buscando...';
+  statusEl.className = '';
+  try {
+    const url = `https://nominatim.openstreetmap.org/search?format=json&limit=1&countrycodes=br&q=${encodeURIComponent(query + ', Pernambuco, Brasil')}`;
+    const res = await fetch(url, { headers: { 'Accept-Language': 'pt-BR' } });
+    const data = await res.json();
+    if(data && data.length > 0){
+      const lat = parseFloat(data[0].lat);
+      const lng = parseFloat(data[0].lon);
+      setHome(lat, lng, data[0].display_name);
+      statusEl.textContent = 'Casa marcada: ' + data[0].display_name;
+      statusEl.className = 'ok';
+    } else {
+      statusEl.textContent = 'Endereço não encontrado. Tente ser mais específico ou clique no mapa.';
+      statusEl.className = 'err';
+    }
+  } catch(err){
+    statusEl.textContent = 'Erro na busca. Tente clicar diretamente no mapa para marcar sua casa.';
+    statusEl.className = 'err';
+  }
+});
+
+document.getElementById('address-input').addEventListener('keydown', (e) => {
+  if(e.key === 'Enter'){ document.getElementById('search-btn').click(); }
+});
+
+map.on('click', (e) => {
+  setHome(e.latlng.lat, e.latlng.lng, 'ponto marcado manualmente');
+  document.getElementById('home-status').textContent = 'Casa marcada manualmente no mapa.';
+  document.getElementById('home-status').className = 'ok';
+});
+
+function boot(){
+  renderMarkers();
+  renderList();
+  const bounds = L.latLngBounds(PHARMACIES.map(p => [p.latitude, p.longitude]));
+  map.fitBounds(bounds, { padding: [30,30] });
+}
+
+// Tenta carregar farmacias_pe.json (arquivo separado, editável) da mesma pasta.
+// Se não conseguir (arquivo ausente, aberto via file:// sem servidor local, etc.),
+// usa o snapshot embutido acima sem quebrar a página.
+const statusEl = document.getElementById('data-status');
+fetch('farmacias_pe.json')
+  .then(res => {
+    if(!res.ok) throw new Error('not found');
+    return res.json();
+  })
+  .then(data => {
+    if(Array.isArray(data) && data.length > 0){
+      PHARMACIES = data;
+      statusEl.textContent = `Dados carregados de farmacias_pe.json (${data.length} farmácias).`;
+    } else {
+      statusEl.textContent = `Usando snapshot embutido (${PHARMACIES.length} farmácias).`;
+    }
+    boot();
+  })
+  .catch(() => {
+    statusEl.textContent = `Usando snapshot embutido (${PHARMACIES.length} farmácias) — farmacias_pe.json não encontrado nesta pasta/origem.`;
+    boot();
+  });
+</script>
+
+</body>
+</html>
